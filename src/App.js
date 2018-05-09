@@ -20,6 +20,7 @@ class App extends React.Component{
       error: null
     }
   }
+  
   getWeather(event){
     event.preventDefault();
     const city = event.target.elements.city.value
@@ -50,16 +51,30 @@ class App extends React.Component{
     const {temperature, city, country, humidity, description, error} = this.state;
     return(
       <div>
-        <Titles/>
-        <Form getWeather={this.getWeather}/>
-        <Weather 
-          temperature={temperature} 
-          city ={city}
-          country={country}
-          humidity={humidity} 
-          description={description}
-          error = {error}
-        />
+        <div className="wrapper">
+          <div className="main">
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-5 title-container">
+                  <Titles/>
+                </div>
+
+                <div className="col-xs-7 form-container">
+                  <Form getWeather={this.getWeather}/>
+                  <Weather 
+                      temperature={temperature} 
+                      city ={city}
+                      country={country}
+                      humidity={humidity} 
+                      description={description}
+                      error = {error}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
     );
   }
